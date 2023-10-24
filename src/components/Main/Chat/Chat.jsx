@@ -1,7 +1,7 @@
 import React from "react";
 
 const Chat = () => {
-  return <div>Chat</div>;
+  return <div className="grow-[2] md:grow">Chat</div>;
 };
 
 export default Chat;

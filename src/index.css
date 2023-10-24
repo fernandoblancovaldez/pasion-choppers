@@ -3,3 +3,12 @@
   line-height: 1.5;
   font-weight: 400;
 }
+
+video {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
