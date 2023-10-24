@@ -12,18 +12,14 @@ const Main = () => {
         autoPlay
         muted
         loop
-        poster="cake.jpg"
-        className="absolute z-10 w-auto min-w-full min-h-full max-w-none object-cover"
+        className="absolute z-10 w-auto min-w-full min-h-full max-w-none"
       >
         <source src={BackgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="pt-16 container mx-auto grow flex flex-col md:flex-row gap-2 relative z-30">
+      <div className="pt-16 pb-20 container mx-auto grow flex flex-col md:flex-row gap-2 relative z-30">
         <Slider />
         <Chat />
-      </div>
-      <div className="pb-3 relative z-30">
-        <Radio />
       </div>
     </main>
   );
