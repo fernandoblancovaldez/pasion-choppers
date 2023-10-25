@@ -28,7 +28,7 @@ const Radio = () => {
     audioPlayer.current.currentTime = audioPlayer.current.currentTime - 15;
   };
   return (
-    <div className="backdrop-blur grid grid-cols-2 sm:grid-cols-3">
+    <div className="grid grid-cols-2 sm:grid-cols-3">
       <div className="flex items-center justify-center">
         <div className="bg-gray-900">
           <img

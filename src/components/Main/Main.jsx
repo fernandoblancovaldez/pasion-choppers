@@ -1,6 +1,6 @@
 import React from "react";
+import { AuthProvider } from "../../context/AuthContext";
 import Chat from "./Chat/Chat";
-import Radio from "./Radio/Radio";
 import Slider from "./Slider/Slider";
 import BackgroundVideo from "../../assets/background-360p.mp4";
 
@@ -19,7 +19,9 @@ const Main = () => {
       </video>
       <div className="pt-16 pb-24 p-4 h-full mx-auto grow flex flex-col md:flex-row relative z-30 items-center gap-2 container">
         <Slider />
-        <Chat />
+        <AuthProvider>
+          <Chat />
+        </AuthProvider>
       </div>
     </main>
   );
