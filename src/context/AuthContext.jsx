@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {loading ? <Spinner className="h-12 w-12 mx-auto" /> : children}
+      {loading ? <Spinner className="h-12 w-12 m-auto" /> : children}
     </AuthContext.Provider>
   );
 };

@@ -1,25 +1,27 @@
 import React from "react";
 import { Carousel } from "@material-tailwind/react";
+import Ph1 from "../../../assets/fotos-slider/ph1.jpg";
+import Ph2 from "../../../assets/fotos-slider/ph2.jpg";
+import Ph3 from "../../../assets/fotos-slider/ph3.png";
+import Ph4 from "../../../assets/fotos-slider/ph4.jpg";
+import Ph5 from "../../../assets/fotos-slider/ph5.svg";
 
 const Slider = () => {
+  const images = [Ph1, Ph2, Ph3, Ph4, Ph5];
+  console.log(images);
   return (
     <div className="h-1/2 md:w-3/5 md:h-5/6">
-      <Carousel className="" autoplay={true} loop={true}>
-        <img
-          src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-          alt="image 1"
-          className="h-full w-full object-cover"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
-          alt="image 2"
-          className="h-full w-full object-cover"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
-          alt="image 3"
-          className="h-full w-full object-cover"
-        />
+      <Carousel autoplay={true} loop={true}>
+        {images.map((img, index) => {
+          return (
+            <img
+              key={index}
+              src={img}
+              alt={`Ph${index}`}
+              className="h-full w-full object-contain"
+            />
+          );
+        })}
       </Carousel>
     </div>
   );
