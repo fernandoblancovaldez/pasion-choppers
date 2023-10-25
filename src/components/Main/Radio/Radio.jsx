@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useRef } from "react";
-import { PlayIcon, PauseIcon } from "@heroicons/react/24/solid";
 import {
+  PlayIcon,
+  PauseIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
-} from "@heroicons/react/20/solid";
+} from "@heroicons/react/24/solid";
 import Logo from "../../../assets/logo-transparente-blanco.svg";
 
 const Radio = () => {
@@ -65,19 +66,16 @@ const Radio = () => {
           aria-hidden="true"
           onClick={handleBackward}
         />
-        {isPlaying ? (
-          <PauseIcon
-            className="block h-6 w-6 transition ease-in-out hover:scale-125 active:scale-100 cursor-pointer"
-            aria-hidden="true"
-            onClick={handleTogglePlayPause}
-          />
-        ) : (
-          <PlayIcon
-            className="block h-6 w-6 transition ease-in-out hover:scale-125 active:scale-100 cursor-pointer"
-            aria-hidden="true"
-            onClick={handleTogglePlayPause}
-          />
-        )}
+        <div
+          className="p-1.5 mx-1 border-white border-2 hover:border rounded-full transition ease-in-out hover:scale-125 active:scale-100 cursor-pointer"
+          onClick={handleTogglePlayPause}
+        >
+          {isPlaying ? (
+            <PauseIcon className="block h-5 w-5 " aria-hidden="true" />
+          ) : (
+            <PlayIcon className="block h-5 w-5 " aria-hidden="true" />
+          )}
+        </div>
         <ChevronDoubleRightIcon
           className="block h-3 w-6 transition ease-in-out hover:scale-125 active:translate-x-1 cursor-pointer"
           aria-hidden="true"
