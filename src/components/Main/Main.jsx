@@ -17,7 +17,7 @@ const Main = () => {
         <source src={BackgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="pt-16 pb-20 container mx-auto grow flex flex-col md:flex-row gap-2 relative z-30">
+      <div className="pt-16 pb-24 p-4 h-full mx-auto grow flex flex-col md:flex-row relative z-30 items-center gap-2 container">
         <Slider />
         <Chat />
       </div>
