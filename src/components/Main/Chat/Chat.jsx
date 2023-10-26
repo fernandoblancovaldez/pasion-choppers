@@ -39,7 +39,8 @@ const Chat = () => {
     }
   };
 
-  const handleLogout = async () => {
+  const handleLogout = async (e) => {
+    e.preventDefault();
     try {
       await logout();
     } catch (error) {
