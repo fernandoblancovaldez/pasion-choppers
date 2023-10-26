@@ -99,14 +99,15 @@ const Chat = () => {
             />
             <button
               type="submit"
-              className="btn btn-circle  btn-sm rounded-full text-base-200 hover:text-gray-800 mx-2 px-1 border-2 transition ease-in-out hover:scale-125 active:-translate-x-1"
+              className="border-0 text-base-200 mx-2 transition ease-in-out hover:scale-125 active:translate-x-1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
-                viewBox="0 0 24 24"
+                viewBox="0 0 25 25"
                 strokeWidth="1.5"
                 stroke="currentColor"
+                className="w-8 h-8"
               >
                 <path
                   strokeLinecap="round"

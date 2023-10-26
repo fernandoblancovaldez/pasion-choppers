@@ -6,7 +6,7 @@ import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
 } from "@heroicons/react/24/solid";
-import Logo from "../../../assets/logo-transparente-blanco.svg";
+import Logo from "../../../assets/escuchame-entre-el-ruido.png";
 
 const Radio = () => {
   const [isPlaying, setIsPlaying] = useState(false);

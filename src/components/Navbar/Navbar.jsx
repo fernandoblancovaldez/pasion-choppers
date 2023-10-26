@@ -1,7 +1,7 @@
 import Logo from "../../assets/logo-transparente-blanco.svg";
 const Navbar = () => {
   return (
-    <header className="fixed top w-full backdrop-blur">
+    <header className="fixed top z-10 w-full backdrop-blur">
       <nav className="mx-auto py-3 flex" aria-label="Global">
         <div className="mx-auto flex gap-x-3 items-center">
           <i>

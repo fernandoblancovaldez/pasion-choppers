@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={value} className="">
       {loading ? (
         <span className="loading loading-spinner loading-lg m-auto"></span>
       ) : (
