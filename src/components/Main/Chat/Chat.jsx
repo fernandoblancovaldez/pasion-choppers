@@ -4,32 +4,24 @@ import { UserAuth } from "../../../context/AuthContext";
 import { onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 
-import {
-  PauseIcon,
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
-} from "@heroicons/react/24/solid";
-
 const Chat = () => {
-  //const messagesEndRef = useRef();
+  const messagesEndRef = useRef();
   const chatBoxRef = useRef();
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([]);
 
   const { currentUser, signInWithGoogle, logout } = UserAuth();
 
-  console.log(messages, currentUser);
-
-  /*     const scrollToBottom = () => {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    };
-    useEffect(() => {
-      const { scrollHeight, scrollTop, clientHeight } = chatBoxRef.current;
-      const adicional = clientHeight * 0.5;
-      scrollTop + clientHeight + adicional >= scrollHeight
-        ? scrollToBottom()
-        : null;
-    }, [messages]); */
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => {
+    const { scrollHeight, scrollTop, clientHeight } = chatBoxRef.current;
+    const adicional = clientHeight * 0.5;
+    scrollTop + clientHeight + adicional >= scrollHeight
+      ? scrollToBottom()
+      : null;
+  }, [messages]);
 
   const handleLogin = async () => {
     try {
@@ -85,11 +77,43 @@ const Chat = () => {
     return () => unsubscribe;
   }, []);
   return (
-    <div className="h-1/2 w-full md:w-2/5 md:h-5/6 2xl:h-4/6 flex flex-col backdrop-blur rounded-3xl">
+    <div className="h-1/2 w-full md:w-2/5 md:h-5/6 2xl:h-4/6 flex flex-col backdrop-blur rounded-3xl gap-1">
+      <div className="flex-1 overflow-y-auto" ref={chatBoxRef}>
+        {messages.map((msg) => (
+          <div
+            className={`chat chat-${
+              currentUser && msg.uid === currentUser.uid ? "end" : "start"
+            } mx-2`}
+            key={msg.id}
+          >
+            <div className="chat-image avatar">
+              <div className="w-10 rounded-full">
+                <img src={msg.avatar} alt={msg.name} />
+              </div>
+            </div>
+            <div className="chat-header text-xs lg:text-sm">
+              {msg.name}
+              {/* <time className="text-xs opacity-50">12:45</time> */}
+            </div>
+            <div
+              className={`chat-bubble text-xs md:text-sm lg:text-base flex items-center py-0 px-3 ${
+                currentUser && msg.uid === currentUser.uid
+                  ? "text-end"
+                  : "text-start"
+              }`}
+            >
+              <p>{msg.text}</p>
+            </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef}></div>
+      </div>
       {currentUser ? (
         <>
-          <div className="flex-1" ref={chatBoxRef}></div>
-          <form className="rounded-full join flex-none m-2">
+          <form
+            className="rounded-full join flex-none m-2"
+            onSubmit={handleSendMessage}
+          >
             <input
               id="input-text"
               className="input input-ghost input-sm rounded-full pe-0 grow shrink"
@@ -138,11 +162,11 @@ const Chat = () => {
         </>
       ) : (
         <div
-          className="m-auto tooltip tooltip-open tooltip-bottom"
+          className="m-auto tooltip tooltip-open tooltip-right"
           data-tip="Ingresar al Chat"
         >
           <div
-            className="btn btn-circle transition ease-in-out hover:scale-125 active:scale-100  btn-sm "
+            className="btn btn-circle transition ease-in-out hover:scale-125 active:scale-100 m-1 btn-sm "
             onClick={handleLogin}
           >
             <svg

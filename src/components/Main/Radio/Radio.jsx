@@ -32,7 +32,7 @@ const Radio = () => {
       <div className="flex items-center justify-center">
         <div className="bg-gray-900">
           <img
-            className="h-14 w-auto object-fill"
+            className="h-14 w-auto object-contain"
             src={Logo}
             alt="Escuchame Entre El Ruido"
           ></img>
