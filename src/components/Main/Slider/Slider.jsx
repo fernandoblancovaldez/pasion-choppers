@@ -8,9 +8,8 @@ import Ph5 from "../../../assets/fotos-slider/ph5.svg";
 
 const Slider = () => {
   const images = [Ph1, Ph2, Ph3, Ph4, Ph5];
-  console.log(images);
   return (
-    <div className="h-1/2 md:w-3/5 md:h-5/6">
+    <div className="h-1/2 md:w-3/5 md:h-5/6 2xl:h-4/6">
       <Carousel autoplay={true} loop={true}>
         {images.map((img, index) => {
           return (

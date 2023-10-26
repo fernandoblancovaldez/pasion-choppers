@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 
-import { Spinner } from "@material-tailwind/react";
+//import { Spinner } from "@material-tailwind/react";
 
 //creando contexto
 const AuthContext = createContext();
@@ -45,7 +45,11 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {loading ? <Spinner className="h-12 w-12 m-auto" /> : children}
+      {loading ? (
+        <span className="loading loading-spinner loading-lg m-auto"></span>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 };
@@ -53,3 +57,5 @@ export const AuthProvider = ({ children }) => {
 export const UserAuth = () => {
   return useContext(AuthContext);
 };
+
+/* <Spinner className="h-12 w-12 m-auto" /> */

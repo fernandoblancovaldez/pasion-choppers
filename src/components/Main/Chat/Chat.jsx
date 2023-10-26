@@ -4,11 +4,15 @@ import { UserAuth } from "../../../context/AuthContext";
 import { onSnapshot, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 
-import { Carousel } from "@material-tailwind/react";
+import {
+  PauseIcon,
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+} from "@heroicons/react/24/solid";
 
 const Chat = () => {
-  /*     const messagesEndRef = useRef();
-    const chatBoxRef = useRef(); */
+  //const messagesEndRef = useRef();
+  const chatBoxRef = useRef();
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -80,24 +84,76 @@ const Chat = () => {
     return () => unsubscribe;
   }, []);
   return (
-    <div className="h-1/2 md:w-2/5 md:h-5/6">
-      <Carousel className="">
-        <img
-          src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
-          alt="image 1"
-          className="h-full w-full object-cover"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
-          alt="image 2"
-          className="h-full w-full object-cover"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
-          alt="image 3"
-          className="h-full w-full object-cover"
-        />
-      </Carousel>
+    <div className="h-1/2 w-full md:w-2/5 md:h-5/6 2xl:h-4/6 flex flex-col">
+      {currentUser ? (
+        <>
+          <div className="flex-1" ref={chatBoxRef}></div>
+          <form className="rounded-full join flex-none">
+            <input
+              required
+              id="input-text"
+              className="input input-ghost input-xs  sm:input-sm rounded-full pe-0 grow shrink"
+              type="text"
+              placeholder="Escribe tu mensaje"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="btn btn-circle btn-xs sm:btn-sm rounded-full text-base-200 hover:text-gray-800 mx-2 px-1 border-2 transition ease-in-out hover:scale-125 active:-translate-x-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                />
+              </svg>
+            </button>
+            <button
+              className="btn btn-circle transition ease-in-out hover:scale-125 active:scale-100 btn-xs sm:btn-sm px-1"
+              onClick={handleLogout}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </form>
+        </>
+      ) : (
+        <div
+          className="btn btn-circle transition ease-in-out hover:scale-125 active:scale-100 btn-xs sm:btn-sm m-auto"
+          onClick={handleLogin}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              fillRule="evenodd"
+              d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97zM6.75 8.25a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H7.5z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </div>
+      )}
     </div>
   );
 };
