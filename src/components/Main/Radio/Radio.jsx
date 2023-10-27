@@ -11,7 +11,7 @@ import Logo from "../../../assets/escuchame-entre-el-ruido.png";
 const Radio = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioPlayer = useRef();
-  const radioSrc = "http://stream.codigosur.org:8000/kasandrxs.mp3";
+  const radioSrc = "https://pasion-choppers.netlify.app/stream.php";
   /* "https://buecrplb01.cienradios.com.ar/1406_Rock_Argentino_32000.aac"; */
 
   const handleTogglePlayPause = () => {
